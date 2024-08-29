@@ -40,3 +40,11 @@ void calc_condition_fw();
 the file. Again, please close the file.\
  */
 void fr();
+
+/**
+ * smaller helper method for calccondition
+ * @param a
+ * @param b
+ * @return
+ */
+const char* even_odd(int a, int b);
