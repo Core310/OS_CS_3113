@@ -1,7 +1,6 @@
 #include "Hw1.h"
 #include <stdio.h>
 #include <stdlib.h>
-#define arrSize(x)  (sizeof(x) / sizeof((x)[0]))
 
 int* arr1;
 int* arr2;
@@ -41,12 +40,12 @@ void loop_and_array() {
     printf("%s","\nEnter contents of arr1:\n");
     for(int i =0; i< usrinp; i++) {
         printf("Enter value of arr1[%d]: ",i);
-        arr1[i] = scanf("%d",&arr1);
+        scanf("%d",&arr1[i]);
     }
     printf("%s","Enter contents of arr2:\n");
     for (int i = 0; i < usrinp; ++i) {
         printf("Enter value of arr2[%d]: ",i);
-        arr1[i] = scanf("%d",&arr2);
+        scanf("%d",&arr2[i]);
     }
 }
 
