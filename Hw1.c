@@ -1,7 +1,7 @@
 #include "Hw1.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#define arrSize(x)  (sizeof(x) / sizeof((x)[0]))
 
 int* arr1;
 int* arr2;
@@ -15,34 +15,37 @@ int main(void) {
     loop_and_array();
     calc_condition_fw();
     fr();
+    free(arr1);
+    free(arr2);
+    return 0;
 }
 
 void array_and_pointer() {
     printf("Input array size");
-    int usrinp = scanf("%d");
+    scanf("%d",&usrinp);
     arr1 = malloc(usrinp * sizeof(int));
     arr2 = malloc(usrinp * sizeof(int));
 }
 
 void pointer() {
-    printf("%s","\nAdress of arrl after allocation: ");
+    printf("%s","Adress of arrl after allocation: ");
     printf("%p",&arr1);
 }
 
 void address_Space() {
     printf("%s","\nSize of pointer arrl: ");
-    printf("%llu",sizeof(arr1));
+    printf("%llu", sizeof(arr1));
 }
 
 void loop_and_array() {
-    printf("%s","Enter contents of arr1:");
-    for(int i =0; i< sizeof(arr1); i++) {
-        printf("Enter value of arr1[%d]",i);
+    printf("%s","\nEnter contents of arr1:\n");
+    for(int i =0; i< usrinp; i++) {
+        printf("Enter value of arr1[%d]: ",i);
         arr1[i] = scanf("%d",&arr1);
     }
-    printf("%s","Enter contents of arr2:");
-    for (int i = 0; i < sizeof(arr2); ++i) {
-        printf("Enter value of arr2[%d]",i);
+    printf("%s","Enter contents of arr2:\n");
+    for (int i = 0; i < usrinp; ++i) {
+        printf("Enter value of arr2[%d]: ",i);
         arr1[i] = scanf("%d",&arr2);
     }
 }
@@ -54,10 +57,11 @@ int declare_func(int o,int p) {
 void calc_condition_fw() {
     printf("%s", "Multiplication start.\nMultiplication done.");
     fptr = fopen("hw1_output.txt", "w");
-    for (int i = 0; i < sizeof(arr1); ++i) {
+    for (int i = 0; i < usrinp; i++) {
         int rslt = arr1[i] * arr2[i];
-        fprintf(fptr, "[%d]\n",rslt);
-        fprintf(fptr,"\t [%d] is an [%s] number.\n", rslt,even_odd(arr1[i],arr2[i]));
+        printf("%d \n", arr1[i]);
+        fprintf(fptr, "\narr[%d] * arr2[%d] = [%d]\n", i, i, rslt);
+        fprintf(fptr,"\n\t [%d] is an [%s] number.\n", rslt,even_odd(arr1[i],arr2[i]));
     }
     fclose(fptr);
 }
@@ -67,10 +71,11 @@ const char* even_odd(int a, int b) {
 }
 
 void fr() {
-    printf("%s","Read file.");
+    printf("%s","\nRead file.");
     fptr = fopen("hw1_output.txt", "r");
-    while (const char* c = nullptr) {
-        printf("[%c]\n",c);
+    char curCh;
+    while ((curCh = fgetc(fptr)) != EOF) {
+        printf("%c", curCh);
     }
     fclose(fptr);
 }
