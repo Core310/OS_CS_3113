@@ -58,7 +58,6 @@ void calc_condition_fw() {
     fptr = fopen("hw1_output.txt", "w");
     for (int i = 0; i < usrinp; i++) {
         int rslt = arr1[i] * arr2[i];
-        printf("%d \n", arr1[i]);
         fprintf(fptr, "\narr[%d] * arr2[%d] = [%d]\n", i, i, rslt);
         fprintf(fptr,"\n\t [%d] is an [%s] number.\n", rslt,even_odd(arr1[i],arr2[i]));
     }
