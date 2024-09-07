@@ -1,3 +1,3 @@
-C:/Users/arika/CLionProjects/CS3203/cmake-build-debug/CMakeFiles/CMAKE_C_STANDARD.dir
-C:/Users/arika/CLionProjects/CS3203/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/arika/CLionProjects/CS3203/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/arika/Documents/GitHub/CS3203/cmake-build-debug/CMakeFiles/CMAKE_C_STANDARD.dir
+C:/Users/arika/Documents/GitHub/CS3203/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/arika/Documents/GitHub/CS3203/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -8,8 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/arika/CLionProjects/CS3203/Hw1.c" "CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.obj" "gcc" "CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.obj.d"
-  "C:/Users/arika/CLionProjects/CS3203/main.c" "CMakeFiles/CMAKE_C_STANDARD.dir/main.c.obj" "gcc" "CMakeFiles/CMAKE_C_STANDARD.dir/main.c.obj.d"
+  "C:/Users/arika/Documents/GitHub/CS3203/Hw1.c" "CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.obj" "gcc" "CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.obj.d"
+  "C:/Users/arika/Documents/GitHub/CS3203/genUtilsLib/arika_utils.c" "CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.obj" "gcc" "CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.obj.d"
+  "C:/Users/arika/Documents/GitHub/CS3203/main.c" "CMakeFiles/CMAKE_C_STANDARD.dir/main.c.obj" "gcc" "CMakeFiles/CMAKE_C_STANDARD.dir/main.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

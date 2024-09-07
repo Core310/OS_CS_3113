@@ -152,6 +152,30 @@ Hw1.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.s
 .PHONY : Hw1.c.s
 
+genUtilsLib/arika_utils.obj: genUtilsLib/arika_utils.c.obj
+.PHONY : genUtilsLib/arika_utils.obj
+
+# target to build an object file
+genUtilsLib/arika_utils.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.obj
+.PHONY : genUtilsLib/arika_utils.c.obj
+
+genUtilsLib/arika_utils.i: genUtilsLib/arika_utils.c.i
+.PHONY : genUtilsLib/arika_utils.i
+
+# target to preprocess a source file
+genUtilsLib/arika_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.i
+.PHONY : genUtilsLib/arika_utils.c.i
+
+genUtilsLib/arika_utils.s: genUtilsLib/arika_utils.c.s
+.PHONY : genUtilsLib/arika_utils.s
+
+# target to generate assembly for a file
+genUtilsLib/arika_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.s
+.PHONY : genUtilsLib/arika_utils.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -188,6 +212,9 @@ help:
 	@echo ... Hw1.obj
 	@echo ... Hw1.i
 	@echo ... Hw1.s
+	@echo ... genUtilsLib/arika_utils.obj
+	@echo ... genUtilsLib/arika_utils.i
+	@echo ... genUtilsLib/arika_utils.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

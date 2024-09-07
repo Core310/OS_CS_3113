@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMAKE_C_STANDARD.pdb"
   "CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.obj"
   "CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.obj.d"
+  "CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.obj"
+  "CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.obj.d"
   "CMakeFiles/CMAKE_C_STANDARD.dir/main.c.obj"
   "CMakeFiles/CMAKE_C_STANDARD.dir/main.c.obj.d"
   "libCMAKE_C_STANDARD.dll.a"
