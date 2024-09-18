@@ -6,7 +6,7 @@
 
 
 int incrementByOne(int oldVal ,int newVal) {
-    while (oldVal <= newVal) oldVal++;
+    while (oldVal < newVal) oldVal++;
     return oldVal;
 }
 
@@ -15,17 +15,22 @@ int createProcessAfter(int total, int processNumber, int valTo) {
     return total;
 }
 
+void waitForPID() {
+    wait(getpid()), printf("Child with ID: %d has just exited.\n",getpid());
+}
+
+void makeChildProcess(int *total, int *p) {
+    return (*total = createProcessAfter(*total, 1, 100000), *p = fork(), waitForPID());
+}
+
 int main() {
     int total=0;
-    int p1=1,p2=1,p3=3,p4=4;
-    pid_t pid;
+    int p1,p2=1,p3=3,p4=4;
     p1 = fork();
-    p1 == 0 ? (total = createProcessAfter(total,1,100000), p2 = fork()): 0;
-    p2 == 0 ? (total = createProcessAfter(total,2,200000), p3 = fork()): 0;
-    p3 == 0 ? (total = createProcessAfter(total,3,300000), p4 = fork()): 0;
-    p4 == 0 ? (createProcessAfter(total,4,500000)): 0;
-
-    return 0;
+    p1 == 0 ? makeChildProcess(&total, &p2): 0;
+    p2 == 0 ? makeChildProcess(&total, &p3): 0;
+    p3 == 0 ? makeChildProcess(&total, &p4): 0;
+    p4 == 0 ? (createProcessAfter(total,4,500000), waitForPID()): 0;
 }
 
 
