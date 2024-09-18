@@ -4,7 +4,12 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-
+/**
+ *
+ * @param oldVal total
+ * @param newVal value to increment by
+ * @return 
+ */
 int incrementByOne(int oldVal ,int newVal) {
     while (oldVal < newVal) oldVal++;
     return oldVal;
@@ -19,18 +24,19 @@ void waitForPID() {
     wait(getpid()), printf("Child with ID: %d has just exited.\n",getpid());
 }
 
-void makeChildProcess(int *total, int *p) {
-    return (*total = createProcessAfter(*total, 1, 100000), *p = fork(), waitForPID());
+void makeChildProcess(int *total, int *p,int valTo) {
+    return (*total = createProcessAfter(*total, 1, valTo), *p = fork(), waitForPID());
 }
 
 int main() {
     int total=0;
     int p1,p2=1,p3=3,p4=4;
     p1 = fork();
-    p1 == 0 ? makeChildProcess(&total, &p2): 0;
-    p2 == 0 ? makeChildProcess(&total, &p3): 0;
-    p3 == 0 ? makeChildProcess(&total, &p4): 0;
-    p4 == 0 ? (createProcessAfter(total,4,500000), waitForPID()): 0;
+    p1 == 0 ? makeChildProcess(&total, &p2,100000): 0;
+    p2 == 0 ? makeChildProcess(&total, &p3,200000): 0;
+    p3 == 0 ? makeChildProcess(&total, &p4,300000): 0;
+    p4 == 0 ? (createProcessAfter(total,4,500000), waitForPID()): 0;// we dont call makeChildProcess since we don't for p4?
+
 }
 
 
