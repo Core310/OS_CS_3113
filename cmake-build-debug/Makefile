@@ -56,10 +56,10 @@ RM = C:\Users\arika\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\arika\Documents\GitHub\CS3203
+CMAKE_SOURCE_DIR = D:\gitRepos\OS_CS_3113
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\arika\Documents\GitHub\CS3203\cmake-build-debug
+CMAKE_BINARY_DIR = D:\gitRepos\OS_CS_3113\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\arika\Documents\GitHub\CS3203\cmake-build-debug\CMakeFiles C:\Users\arika\Documents\GitHub\CS3203\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\gitRepos\OS_CS_3113\cmake-build-debug\CMakeFiles D:\gitRepos\OS_CS_3113\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\arika\Documents\GitHub\CS3203\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\gitRepos\OS_CS_3113\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,77 +128,29 @@ CMAKE_C_STANDARD/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/build
 .PHONY : CMAKE_C_STANDARD/fast
 
-Hw1.obj: Hw1.c.obj
-.PHONY : Hw1.obj
+assignment1.obj: assignment1.c.obj
+.PHONY : assignment1.obj
 
 # target to build an object file
-Hw1.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.obj
-.PHONY : Hw1.c.obj
+assignment1.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/assignment1.c.obj
+.PHONY : assignment1.c.obj
 
-Hw1.i: Hw1.c.i
-.PHONY : Hw1.i
-
-# target to preprocess a source file
-Hw1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.i
-.PHONY : Hw1.c.i
-
-Hw1.s: Hw1.c.s
-.PHONY : Hw1.s
-
-# target to generate assembly for a file
-Hw1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/Hw1.c.s
-.PHONY : Hw1.c.s
-
-genUtilsLib/arika_utils.obj: genUtilsLib/arika_utils.c.obj
-.PHONY : genUtilsLib/arika_utils.obj
-
-# target to build an object file
-genUtilsLib/arika_utils.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.obj
-.PHONY : genUtilsLib/arika_utils.c.obj
-
-genUtilsLib/arika_utils.i: genUtilsLib/arika_utils.c.i
-.PHONY : genUtilsLib/arika_utils.i
+assignment1.i: assignment1.c.i
+.PHONY : assignment1.i
 
 # target to preprocess a source file
-genUtilsLib/arika_utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.i
-.PHONY : genUtilsLib/arika_utils.c.i
+assignment1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/assignment1.c.i
+.PHONY : assignment1.c.i
 
-genUtilsLib/arika_utils.s: genUtilsLib/arika_utils.c.s
-.PHONY : genUtilsLib/arika_utils.s
-
-# target to generate assembly for a file
-genUtilsLib/arika_utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/genUtilsLib/arika_utils.c.s
-.PHONY : genUtilsLib/arika_utils.c.s
-
-main.obj: main.c.obj
-.PHONY : main.obj
-
-# target to build an object file
-main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/main.c.obj
-.PHONY : main.c.obj
-
-main.i: main.c.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-.PHONY : main.s
+assignment1.s: assignment1.c.s
+.PHONY : assignment1.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/main.c.s
-.PHONY : main.c.s
+assignment1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/assignment1.c.s
+.PHONY : assignment1.c.s
 
 # Help Target
 help:
@@ -209,15 +161,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... CMAKE_C_STANDARD
-	@echo ... Hw1.obj
-	@echo ... Hw1.i
-	@echo ... Hw1.s
-	@echo ... genUtilsLib/arika_utils.obj
-	@echo ... genUtilsLib/arika_utils.i
-	@echo ... genUtilsLib/arika_utils.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... assignment1.obj
+	@echo ... assignment1.i
+	@echo ... assignment1.s
 .PHONY : help
 
 
