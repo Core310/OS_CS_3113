@@ -1,4 +1,4 @@
-# Install script for directory: D:/gitRepos/OS_CS_3113
+# Install script for directory: C:/Users/arika/CLionProjects/OS_CS_3113
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/gitRepos/OS_CS_3113/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/arika/CLionProjects/OS_CS_3113/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

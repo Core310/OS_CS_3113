@@ -1,3 +1,0 @@
-D:/gitRepos/OS_CS_3113/cmake-build-debug/CMakeFiles/CMAKE_C_STANDARD.dir
-D:/gitRepos/OS_CS_3113/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/gitRepos/OS_CS_3113/cmake-build-debug/CMakeFiles/rebuild_cache.dir
