@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <sys/shm.h>
+#include <sys/ipc.h>
 
 /**
  *
@@ -28,18 +30,34 @@ void makeChildProcess(int *total, int *p,int valTo) {
     return (*total = createProcessAfter(*total, 1, valTo), *p = fork(), waitForPID());
 }
 
+
 int main() {
-    int total=0;
-    int p1,p2=1,p3=3,p4=4;
+    int shmid = shmget(IPC_PRIVATE, sizeof(int), IPC_CREAT | 0666);
+    if (shmid < 0) {
+        perror("shmget");
+        exit(1);
+    }
+
+    int *total = shmat(shmid, NULL, 0);
+    if (total == (int *)-1) {
+        perror("shmat");
+        exit(1);
+    }
+    *total = 0;
+
+    int p1, p2 = 1, p3 = 3, p4 = 4;
     p1 = fork();
-    p1 == 0 ? makeChildProcess(&total, &p2,100000): 0;
-    p2 == 0 ? makeChildProcess(&total, &p3,200000): 0;
-    p3 == 0 ? makeChildProcess(&total, &p4,300000): 0;
-    p4 == 0 ? (createProcessAfter(total,4,500000), waitForPID()): 0;// we dont call makeChildProcess since we don't for p4?
+    p1 == 0 ? makeChildProcess(total, &p2, 100000) : 0;
+    p2 == 0 ? makeChildProcess(total, &p3, 200000) : 0;
+    p3 == 0 ? makeChildProcess(total, &p4, 300000) : 0;
+    p4 == 0 ? (createProcessAfter(*total, 4, 500000), waitForPID()) : 0;
 
+    // Detach and remove the shared memory segment
+    shmdt(total);
+    shmctl(shmid, IPC_RMID, NULL);
+
+    return 0;
 }
-
-
 
 
 /**
