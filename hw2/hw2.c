@@ -6,9 +6,9 @@
 
 #include <pthread.h>
 #include <stdio.h>
-int total =0;
+int total =-1;
 int main () {
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 10; i++) {
         make_thread();
         printf("Current value of total: %d\n" , total);
     }
