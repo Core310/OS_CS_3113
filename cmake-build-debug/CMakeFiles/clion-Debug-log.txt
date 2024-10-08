@@ -1,10 +1,14 @@
-/.jbdevcontainer/JetBrains/RemoteDev/dist/a7332f4099b99_CLion-243.12818.61/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /IdeaProjects/OS_CS_3113 -B /IdeaProjects/OS_CS_3113/cmake-build-debug
--- The C compiler identification is GNU 13.2.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Configuring done (3.8s)
--- Generating done (0.5s)
--- Build files have been written to: /IdeaProjects/OS_CS_3113/cmake-build-debug
+C:\Users\arika\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -S C:\Users\arika\CLionProjects\OS_CS_3113 -B C:\Users\arika\CLionProjects\OS_CS_3113\cmake-build-debug
+-- Building for: NMake Makefiles
+CMake Error at CMakeLists.txt:2 (project):
+  Running
+
+   'nmake' '-?'
+
+  failed with:
+
+   no such file or directory
+
+
+CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
+-- Configuring incomplete, errors occurred!
