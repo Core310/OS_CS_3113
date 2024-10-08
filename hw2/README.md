@@ -8,3 +8,4 @@ A print statement was provided but may be commented out if it does not fit the p
 or with `/"pathTo_cmake-build-debug/CMAKE_C_STANDARD"` configured to run hw2.c with CMakeLists.txt
 
 ## Analysis: 
+Code is written in C, and uses the pthread library to create threads.
