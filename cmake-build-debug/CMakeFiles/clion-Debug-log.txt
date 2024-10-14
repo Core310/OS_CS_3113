@@ -1,14 +1,1 @@
-C:\Users\arika\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -S C:\Users\arika\CLionProjects\OS_CS_3113 -B C:\Users\arika\CLionProjects\OS_CS_3113\cmake-build-debug
--- Building for: NMake Makefiles
-CMake Error at CMakeLists.txt:2 (project):
-  Running
-
-   'nmake' '-?'
-
-  failed with:
-
-   no such file or directory
-
-
-CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
--- Configuring incomplete, errors occurred!
+CMakeLists.txt not found in C:\Users\arika\CLionProjects\OS_CS_3113 Select CMakeLists.txt

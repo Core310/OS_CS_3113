@@ -1,3 +1,0 @@
-C:\Users\arika\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -E rm -f CMakeFiles\CMAKE_C_STANDARD.dir/objects.a
-C:\Users\arika\AppData\Local\Programs\CLion\bin\mingw\bin\ar.exe qc CMakeFiles\CMAKE_C_STANDARD.dir/objects.a @CMakeFiles\CMAKE_C_STANDARD.dir\objects1.rsp
-C:\Users\arika\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe -O3 -DNDEBUG -Wl,--whole-archive CMakeFiles\CMAKE_C_STANDARD.dir/objects.a -Wl,--no-whole-archive -o CMAKE_C_STANDARD.exe -Wl,--out-implib,libCMAKE_C_STANDARD.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\CMAKE_C_STANDARD.dir\linkLibs.rsp

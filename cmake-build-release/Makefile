@@ -128,29 +128,53 @@ CMAKE_C_STANDARD/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/build
 .PHONY : CMAKE_C_STANDARD/fast
 
-hw2/hw2.obj: hw2/hw2.c.obj
-.PHONY : hw2/hw2.obj
+src/prevHomeworks/hw2/hw2.obj: src/prevHomeworks/hw2/hw2.c.obj
+.PHONY : src/prevHomeworks/hw2/hw2.obj
 
 # target to build an object file
-hw2/hw2.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/hw2/hw2.c.obj
-.PHONY : hw2/hw2.c.obj
+src/prevHomeworks/hw2/hw2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/src/prevHomeworks/hw2/hw2.c.obj
+.PHONY : src/prevHomeworks/hw2/hw2.c.obj
 
-hw2/hw2.i: hw2/hw2.c.i
-.PHONY : hw2/hw2.i
+src/prevHomeworks/hw2/hw2.i: src/prevHomeworks/hw2/hw2.c.i
+.PHONY : src/prevHomeworks/hw2/hw2.i
 
 # target to preprocess a source file
-hw2/hw2.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/hw2/hw2.c.i
-.PHONY : hw2/hw2.c.i
+src/prevHomeworks/hw2/hw2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/src/prevHomeworks/hw2/hw2.c.i
+.PHONY : src/prevHomeworks/hw2/hw2.c.i
 
-hw2/hw2.s: hw2/hw2.c.s
-.PHONY : hw2/hw2.s
+src/prevHomeworks/hw2/hw2.s: src/prevHomeworks/hw2/hw2.c.s
+.PHONY : src/prevHomeworks/hw2/hw2.s
 
 # target to generate assembly for a file
-hw2/hw2.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/hw2/hw2.c.s
-.PHONY : hw2/hw2.c.s
+src/prevHomeworks/hw2/hw2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/src/prevHomeworks/hw2/hw2.c.s
+.PHONY : src/prevHomeworks/hw2/hw2.c.s
+
+src/proj2(onlyInUbuntu/assignment2.obj: src/proj2(onlyInUbuntu/assignment2.c.obj
+.PHONY : src/proj2(onlyInUbuntu/assignment2.obj
+
+# target to build an object file
+src/proj2(onlyInUbuntu/assignment2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/src/proj2(onlyInUbuntu/assignment2.c.obj
+.PHONY : src/proj2(onlyInUbuntu/assignment2.c.obj
+
+src/proj2(onlyInUbuntu/assignment2.i: src/proj2(onlyInUbuntu/assignment2.c.i
+.PHONY : src/proj2(onlyInUbuntu/assignment2.i
+
+# target to preprocess a source file
+src/proj2(onlyInUbuntu/assignment2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/src/proj2(onlyInUbuntu/assignment2.c.i
+.PHONY : src/proj2(onlyInUbuntu/assignment2.c.i
+
+src/proj2(onlyInUbuntu/assignment2.s: src/proj2(onlyInUbuntu/assignment2.c.s
+.PHONY : src/proj2(onlyInUbuntu/assignment2.s
+
+# target to generate assembly for a file
+src/proj2(onlyInUbuntu/assignment2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMAKE_C_STANDARD.dir\build.make CMakeFiles/CMAKE_C_STANDARD.dir/src/proj2(onlyInUbuntu/assignment2.c.s
+.PHONY : src/proj2(onlyInUbuntu/assignment2.c.s
 
 # Help Target
 help:
@@ -161,9 +185,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... CMAKE_C_STANDARD
-	@echo ... hw2/hw2.obj
-	@echo ... hw2/hw2.i
-	@echo ... hw2/hw2.s
+	@echo ... src/prevHomeworks/hw2/hw2.obj
+	@echo ... src/prevHomeworks/hw2/hw2.i
+	@echo ... src/prevHomeworks/hw2/hw2.s
+	@echo ... src/proj2(onlyInUbuntu/assignment2.obj
+	@echo ... src/proj2(onlyInUbuntu/assignment2.i
+	@echo ... src/proj2(onlyInUbuntu/assignment2.s
 .PHONY : help
 
 

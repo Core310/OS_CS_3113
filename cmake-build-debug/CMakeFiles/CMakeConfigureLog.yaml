@@ -4,8 +4,8 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/Users/arika/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "/cygdrive/c/Users/arika/AppData/Local/JetBrains/CLion2024.2/cygwin_cmake/share/cmake-3.29.6/Modules/CMakeDetermineSystem.cmake:205 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      The system is: Windows - 10.0.22621 - AMD64
+      The system is: CYGWIN - 3.5.4-1.x86_64 - x86_64
 ...
