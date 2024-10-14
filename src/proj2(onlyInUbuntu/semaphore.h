@@ -7,6 +7,9 @@ void create_semaphores();
 /* number of semaphores being created */
 #define NSEMS 1
 
+
+
+
 /* GLOBAL */
 
 int sem_id; /* semaphore id */
@@ -24,7 +27,7 @@ typedef union {
 } semunion;
 
 /* POP (wait()) function for semaphore to protect critical section */
-int POP()
+inline int POP()
 {
     int status;
     status = semop(sem_id, P, 1);
@@ -32,9 +35,10 @@ int POP()
 }
 
 /* VOP (signal()) function for semaphore to release protection */
-int VOP()
+inline int VOP()
 {
     int status;
     status = semop(sem_id, V, 1);
     return status;
 }
+

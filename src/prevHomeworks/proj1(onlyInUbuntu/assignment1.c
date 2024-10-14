@@ -53,7 +53,7 @@ int main() {
         exit(1);
     } // assist in creating shared mem
 
-    total->value = 0;or the
+    total->value = 0;
 
     (pid1 = fork()) == 0 ? (createProcessAfter(total->value, 100000, '1'), exit(0)) : 0;
     (pid2 = fork()) == 0 ? (createProcessAfter(total->value, 200000, '2'), exit(0)) : 0;
