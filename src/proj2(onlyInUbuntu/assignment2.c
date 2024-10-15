@@ -29,10 +29,7 @@ int main() {
     value1 =semctl(sem_id, NSEMS, SETVAL, semctl_arg);
     value =semctl(sem_id, NSEMS, GETVAL, semctl_arg);
     if (value < 0) printf("Error detected in SETVAL.\n");
-    /* De-allocate semaphore */
-    semctl_arg.val = 0;
-    int status = semctl(sem_id, 0, IPC_RMID, semctl_arg);
-    if(status < 0) printf("Error in removing the semaphore.\n");
+
 
 
     (pid1 = fork()) == 0 ? (createProcessAfter(total->value, 100000, '1'), exit(0)) : 0;
@@ -42,6 +39,12 @@ int main() {
     //create all child processes
 
     waitForChildren();
+
+    /* De-allocate semaphore */
+    semctl_arg.val = 0;
+    int status = semctl(sem_id, 0, IPC_RMID, semctl_arg);
+    if(status < 0) printf("Error in removing the semaphore.\n");
+
     detach_and_cleanup_shared_memory();
     printf("End of Simulation.");
 
