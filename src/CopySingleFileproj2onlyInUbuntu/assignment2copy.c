@@ -24,8 +24,7 @@ shared_mem *total;
 int incrementByOne(int oldVal, int newVal) {
     while (oldVal < newVal) oldVal++;
     return oldVal;
-}
-
+}//increment by 100k 200k 300k per each run
 
 
 #include <sys/sem.h>
@@ -104,11 +103,11 @@ int main() {
         return 1;
     }
 
-
     if ((shmid = shmget(SHMKEY, sizeof(shared_mem), IPC_CREAT | 0666)) < 0) {
         perror("shmget");
         exit(1);
     }
+
     if ((total = (shared_mem *) shmat(shmid, NULL, 0)) == (shared_mem *) -1) {
         perror("shmat");
         exit(1);
