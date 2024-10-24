@@ -54,9 +54,14 @@ void semaphore_end_signal() {
  * @param newVal new value to assign to total
  * @return
  */
-int incrementByOne(int oldVal, int newVal) {
-    while (oldVal < newVal) oldVal++;
-    return oldVal;
+void incrementByOne(int newVal) {
+    while (total->value < newVal) total->value++;
+}
+
+void processIdExiter() {
+    int status;
+    pid_t child_pid = wait(&status);
+    printf("Child with ID: %d has just exited.\n", child_pid);
 }
 
 /**
@@ -66,14 +71,12 @@ int incrementByOne(int oldVal, int newVal) {
  * @param processNum Current process number assigned by user
  * @return updated total value and a print of process counter
  */
-int createProcessAfter(int total, int valTo, char processNum) {
+void createProcessAfter(int valTo, char processNum) {
     semaphore_wait();
-
-    total = incrementByOne(total, valTo);
-    printf("From Process %c: counter = %d\n", processNum, total);
+    incrementByOne(valTo);
+    printf("From Process %c: counter = %d\n", processNum, total->value);
 
     semaphore_end_signal();
-    return total;
 }
 
 int main() {
@@ -109,16 +112,14 @@ int main() {
     }
 
     // Fork and create child processes
-    (pid1 = fork()) == 0 ? (createProcessAfter(total->value, 100000, '1'), exit(0)) : 0;
-    (pid2 = fork()) == 0 ? (createProcessAfter(total->value, 200000, '2'), exit(0)) : 0;
-    (pid3 = fork()) == 0 ? (createProcessAfter(total->value, 300000, '3'), exit(0)) : 0;
-    (pid4 = fork()) == 0 ? (createProcessAfter(total->value, 500000, '4'), exit(0)) : 0;
+    (pid1 = fork()) == 0 ? (createProcessAfter( 100000, '1'), exit(0)) : processIdExiter();
+    (pid2 = fork()) == 0 ? (createProcessAfter( 200000, '2'), exit(0)) : processIdExiter();
+    (pid3 = fork()) == 0 ? (createProcessAfter( 300000, '3'), exit(0)) : processIdExiter();
+    (pid4 = fork()) == 0 ? (createProcessAfter( 500000, '4'), exit(0)) : processIdExiter();
 
     // Wait for all child processes to complete
     for (int i = 0; i < 4; i++) {
-        int status;
-        pid_t child_pid = wait(&status);
-        printf("Child with ID: %d has just exited.\n", child_pid);
+
     }
 
     // Detach and remove shared memory
