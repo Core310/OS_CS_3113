@@ -66,10 +66,8 @@ void processIdExiter() {
 
 /**
  *
- * @param total input for incrementByOne, representing `total` global variable
  * @param valTo input for incrementByOne
  * @param processNum Current process number assigned by user
- * @return updated total value and a print of process counter
  */
 void createProcessAfter(int valTo, char processNum) {
     semaphore_wait();
