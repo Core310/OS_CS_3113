@@ -50,12 +50,15 @@ void semaphore_end_signal() {
 
 /**
  * Increments input value (total) to a new declared value, child method to createProcessAfter
- * @param oldVal total global variable
  * @param newVal new value to assign to total
  * @return
  */
 void incrementByOne(int newVal) {
-    while (total->value < newVal) total->value++;
+    while (total->value < newVal) {
+        semaphore_wait();
+        total->value++;
+        semaphore_end_signal();
+    }
 }
 
 void processIdExiter() {
@@ -70,14 +73,15 @@ void processIdExiter() {
  * @param processNum Current process number assigned by user
  */
 void createProcessAfter(int valTo, char processNum) {
-    semaphore_wait();
     incrementByOne(valTo);
     printf("From Process %c: counter = %d\n", processNum, total->value);
-
-    semaphore_end_signal();
 }
 
 int main() {
+
+
+
+
     int shmid, pid1, pid2, pid3, pid4;
     char *shmadd;
     shmadd = (char *) 0;

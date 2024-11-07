@@ -7,10 +7,8 @@ project(Assignment2 C)
 set(CMAKE_C_STANDARD 99)
 
 # Add the source files
-add_executable(assignment2.c "proj2onlyInUbuntu/assignment2.c" "proj2onlyInUbuntu/semaphore.h"
-        "proj2onlyInUbuntu/sharedMemory.h"
-        "prevHomeworks/proj1(onlyInUbuntu/assignment1.c"
-        "CopySingleFileproj2onlyInUbuntu/assignment2copy.c"
-        )
+add_executable(
+
+)
 
 # Link the pthread library
