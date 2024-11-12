@@ -19,7 +19,6 @@ are finished to destroy semaphores. The consumer should run slower than producer
 one second sleep in the consumer thread between “reads” from the shared memory.
  */
 
-
 #include "Project3.h"
 
 #include <stdio.h>
@@ -28,7 +27,7 @@ one second sleep in the consumer thread between “reads” from the shared memo
 #include <semaphore.h>
 #include <unistd.h>
 
-#define BUFFER_SIZE 15   // Circular buffer size
+#define BUFFER_SIZE 15   // Circular buffer size as stated in the project document "15 positions"
 #define FILENAME "mytest.dat" // Input file
 
 // Circular buffer
