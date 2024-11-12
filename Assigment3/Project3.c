@@ -19,8 +19,6 @@ are finished to destroy semaphores. The consumer should run slower than producer
 one second sleep in the consumer thread between “reads” from the shared memory.
  */
 
-#include "Project3.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -29,45 +27,47 @@ one second sleep in the consumer thread between “reads” from the shared memo
 
 #define BUFFER_SIZE 15   // Circular buffer size as stated in the project document "15 positions"
 #define FILENAME "mytest.dat" // Input file
+#define FILE_ENDCHARCTER '*'
 
-// Circular buffer
+// circ buffer vars
 char buffer[BUFFER_SIZE];
 int producerIdx = 0;
 int consumerIdx = 0;
 
-// Semaphores and mutex
-sem_t empty_slots;  // To track empty slots in the buffer
-sem_t full_slots;   // To track filled slots in the buffer
-pthread_mutex_t mutex; // Mutex for buffer access
+// Semaphores/mutex init
+sem_t buffer_e_empty_slots;
+sem_t buf_full_slots;
+pthread_mutex_t buffer_mutex;
 
-// Producer thread function
+
 void* producer(void* arg) {
-    FILE* fp = fopen(FILENAME, "r");
+    FILE* fp = fopen(FILENAME, "r"); // r for write
     if (fp == NULL) {
         perror("Error opening file");
         exit(1);
     }
 
     char ch;
-    while (fscanf(fp, "%c", &ch) != EOF) {
-        sem_wait(&empty_slots); // Wait for an empty slot
-        pthread_mutex_lock(&mutex); // Lock the buffer
+    while (fscanf(fp, "%c", &ch) != EOF) {//main file reader
+        sem_wait(&buffer_e_empty_slots); //wait for slot
+        pthread_mutex_lock(&buffer_mutex); // Lock buffer so only this process can use
 
-        // Add the character to the buffer
+        // add ch 2 buf
         buffer[producerIdx] = ch;
         producerIdx = (producerIdx + 1) % BUFFER_SIZE;
-
-        pthread_mutex_unlock(&mutex); // Unlock the buffer
-        sem_post(&full_slots); // Signal a filled slot
+        //release slot + unlock buffer
+        pthread_mutex_unlock(&buffer_mutex);
+        sem_post(&buf_full_slots);
     }
+    //Tel is consumer is EOF with special char *
+    sem_wait(&buffer_e_empty_slots);
+    pthread_mutex_lock(&buffer_mutex);
 
-    // Indicate the end of the file with a special character '*'
-    sem_wait(&empty_slots);
-    pthread_mutex_lock(&mutex);
-    buffer[producerIdx] = '*';// char to end producer sequence
+    buffer[producerIdx] = FILE_ENDCHARCTER;
     producerIdx = (producerIdx + 1) % BUFFER_SIZE;
-    pthread_mutex_unlock(&mutex);
-    sem_post(&full_slots);
+
+    pthread_mutex_unlock(&buffer_mutex);
+    sem_post(&buf_full_slots);
 
     fclose(fp);
     return NULL;
@@ -75,34 +75,35 @@ void* producer(void* arg) {
 
 // Consumer thread function
 void* consumer(void* arg) {
-    char ch;
-    do {
-        sem_wait(&full_slots); // Wait for a filled slot
-        pthread_mutex_lock(&mutex); // Lock the buffer
+    char ch;//ch char ftw! No need any other names for the legendary ch char
+    do { //wow first time I'm using a do while
+        //Do same buffer stuff as producer
+        sem_wait(&buf_full_slots);
+        pthread_mutex_lock(&buffer_mutex);
 
-        // Read the character from the buffer
+        // more same stuff (maybe I could put it in a function)
         ch = buffer[consumerIdx];
         consumerIdx = (consumerIdx + 1) % BUFFER_SIZE;
 
-        pthread_mutex_unlock(&mutex); // Unlock the buffer
-        sem_post(&empty_slots); // Signal an empty slot
+        pthread_mutex_unlock(&buffer_mutex);
+        sem_post(&buffer_e_empty_slots);
 
-        if (ch != '*') { // exit condition
-            printf("%c", ch); // Print the character
+        if (ch != FILE_ENDCHARCTER) { // ! special char?
+            printf("%c", ch);
             fflush(stdout);
         }
 
         sleep(1); // sleep to make the consumer run slower as directed in p.2 of the document "The consumer should run slower than producer."
-    } while (ch != '*'); // Stop when the special character is read
+    } while (ch != FILE_ENDCHARCTER);
 
-    return NULL;
+    return NULL;//oof no nullptr :(
 }
 
 int main() {
     // init semaphore + mutex
-    sem_init(&empty_slots, 0, BUFFER_SIZE); // Start with all slots empty
-    sem_init(&full_slots, 0, 0);            // Start with no slots filled
-    pthread_mutex_init(&mutex, NULL);
+    sem_init(&buffer_e_empty_slots, 0, BUFFER_SIZE); // Start with all slots empty
+    sem_init(&buf_full_slots, 0, 0);            // Start with no slots filled
+    pthread_mutex_init(&buffer_mutex, NULL);
 
     // init producer/consumer thread
     pthread_t producer_tid, consumer_tid;
@@ -114,9 +115,9 @@ int main() {
     pthread_join(consumer_tid, NULL);
 
     //-rm mutex + sems
-    sem_destroy(&empty_slots);
-    sem_destroy(&full_slots);
-    pthread_mutex_destroy(&mutex);
+    sem_destroy(&buffer_e_empty_slots);
+    sem_destroy(&buf_full_slots);
+    pthread_mutex_destroy(&buffer_mutex);
 
     return 0;
 }
