@@ -28,17 +28,33 @@ one second sleep in the consumer thread between “reads” from the shared memo
 #define BUFFER_SIZE 15   // Circular buffer size as stated in the project document "15 positions"
 #define FILENAME "mytest.dat" // Input file
 #define FILE_ENDCHARCTER '*'
+#define UNLOCK_MUTEX pthread_mutex_unlock(&buffer_mutex);
+#define LOCK_MUTEX pthread_mutex_lock(&buffer_mutex);
 
 // circ buffer vars
 char buffer[BUFFER_SIZE];
-int producerIdx = 0;
-int consumerIdx = 0;
+int producerIdx = 0, consumerIdx = 0;
 
 // Semaphores/mutex init
 sem_t buffer_e_empty_slots;
 sem_t buf_full_slots;
 pthread_mutex_t buffer_mutex;
 
+
+void readFile(FILE *fp) {
+    char ch;
+    while (fscanf(fp, "%c", &ch) != EOF) {//main file reader
+        sem_wait(&buffer_e_empty_slots); //wait for slot
+        LOCK_MUTEX // Lock buffer so only this process can use
+
+        // add ch 2 buf
+        buffer[producerIdx] = ch;
+        producerIdx = (producerIdx + 1) % BUFFER_SIZE;
+        //release slot + unlock buffer
+        UNLOCK_MUTEX;
+        sem_post(&buf_full_slots);
+    }
+}
 
 void* producer(void* arg) {
     FILE* fp = fopen(FILENAME, "r"); // r for write
@@ -47,30 +63,26 @@ void* producer(void* arg) {
         exit(1);
     }
 
-    char ch;
-    while (fscanf(fp, "%c", &ch) != EOF) {//main file reader
-        sem_wait(&buffer_e_empty_slots); //wait for slot
-        pthread_mutex_lock(&buffer_mutex); // Lock buffer so only this process can use
-
-        // add ch 2 buf
-        buffer[producerIdx] = ch;
-        producerIdx = (producerIdx + 1) % BUFFER_SIZE;
-        //release slot + unlock buffer
-        pthread_mutex_unlock(&buffer_mutex);
-        sem_post(&buf_full_slots);
-    }
+    readFile(fp);
     //Tel is consumer is EOF with special char *
     sem_wait(&buffer_e_empty_slots);
-    pthread_mutex_lock(&buffer_mutex);
+    LOCK_MUTEX
 
     buffer[producerIdx] = FILE_ENDCHARCTER;
     producerIdx = (producerIdx + 1) % BUFFER_SIZE;
 
-    pthread_mutex_unlock(&buffer_mutex);
+    UNLOCK_MUTEX;
     sem_post(&buf_full_slots);
 
     fclose(fp);
     return NULL;
+}
+
+void exit_condition(char ch) {
+    if (ch != FILE_ENDCHARCTER) { // ! special char?
+        printf("%c", ch);
+        fflush(stdout);
+    }
 }
 
 // Consumer thread function
@@ -79,19 +91,16 @@ void* consumer(void* arg) {
     do { //wow first time I'm using a do while
         //Do same buffer stuff as producer
         sem_wait(&buf_full_slots);
-        pthread_mutex_lock(&buffer_mutex);
+        LOCK_MUTEX
 
         // more same stuff (maybe I could put it in a function)
         ch = buffer[consumerIdx];
         consumerIdx = (consumerIdx + 1) % BUFFER_SIZE;
 
-        pthread_mutex_unlock(&buffer_mutex);
+        UNLOCK_MUTEX;
         sem_post(&buffer_e_empty_slots);
 
-        if (ch != FILE_ENDCHARCTER) { // ! special char?
-            printf("%c", ch);
-            fflush(stdout);
-        }
+        exit_condition(ch);
 
         sleep(1); // sleep to make the consumer run slower as directed in p.2 of the document "The consumer should run slower than producer."
     } while (ch != FILE_ENDCHARCTER);

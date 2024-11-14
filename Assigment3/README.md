@@ -3,7 +3,7 @@
 - Project 3 folder, containing the following files to run the program:
     - CMakeLists.txt
     - README.md
-    - OS Project3.pdf, Homework PDF that was assigned in class. 
+    - Project3.pdf, Homework PDF that was assigned in class. 
     - Prorject3.c to run the program
 
 ### Code
